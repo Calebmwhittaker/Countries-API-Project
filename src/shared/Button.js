@@ -1,4 +1,5 @@
 import React from "react";
+import "../assets/styles/Button.css";
 
 const Button = (props) => {
   const { onClick, text } = props;
