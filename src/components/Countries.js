@@ -10,12 +10,12 @@ const Countries = (props) => {
           if (query === "") {
             return country;
           } else if (
-            country.name.common.toLowerCase().includes(query.toLowerCase())
+            country.name.common.toLowerCase().startsWith(query.toLowerCase())
           ) {
             return country;
           } else if (
             country.capital
-              ? country.capital[0].toLowerCase().includes(query.toLowerCase())
+              ? country.capital[0].toLowerCase().startsWith(query.toLowerCase())
               : null
           ) {
             return country;
@@ -25,8 +25,10 @@ const Countries = (props) => {
             for (let i = 0; i < languageValues.length; i++) {
               languagesArray.push(languageValues[i].toLowerCase());
             }
-            if (languagesArray.includes(query.toLowerCase())) {
-              return country;
+            for (const language of languagesArray) {
+              if (language.startsWith(query.toLowerCase())) {
+                return country;
+              }
             }
           }
         })

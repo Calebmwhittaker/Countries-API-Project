@@ -7,4 +7,11 @@ input {
     border-radius: 25px;
     font-size: 30px;
     text-align: center;
+    font-family: Helvetica;
+}
+
+@media (max-width: 817px) {
+    input {
+        font-size: 18px;
+    }
 }

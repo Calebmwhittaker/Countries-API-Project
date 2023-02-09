@@ -2,11 +2,11 @@ import React from "react";
 import "../assets/styles/Input.css";
 
 const Input = (props) => {
-  const { style, onChange, placeholder, type } = props;
+  const { style, onKeyUp, placeholder, type } = props;
   return (
     <input
       style={style}
-      onChange={onChange}
+      onKeyUp={onKeyUp}
       placeholder={placeholder}
       type={type}
     />

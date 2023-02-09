@@ -6,7 +6,7 @@ const Header = (props) => {
       className="header-wrapper"
     >
       <h1 style={{ fontSize: "45px" }}>{title}</h1>
-      <h2 style={{ fontSize: "35px" }}>{subtitle}</h2>
+      <h2 style={{ fontSize: "35px", fontFamily: "Helvetica" }}>{subtitle}</h2>
     </header>
   );
 };

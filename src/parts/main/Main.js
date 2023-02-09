@@ -1,4 +1,5 @@
 import React from "react";
+import "../../assets/styles/Icon.css";
 import Input from "../../shared/Input.js";
 import Graph from "../../components/Graph.js";
 import Countries from "../../components/Countries.js";
@@ -13,7 +14,7 @@ const Main = (props) => {
     <main className="main-wrapper" style={{ backgroundColor: "#ebeaea" }}>
       <div className="input-wrapper" style={{ backgroundColor: "#ffffff" }}>
         <Input
-          onChange={handleChange}
+          onKeyUp={handleChange}
           placeholder="Search countries by name, city, and languages"
         />
         <i

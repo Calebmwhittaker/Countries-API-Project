@@ -60,7 +60,9 @@ const Graph = ({ data, query }) => {
           className="country-name-header-container"
         >
           <div className="country-name-header">
-            <p style={{ margin: "0 auto" }}>Country</p>
+            <p style={{ margin: "0 auto" }}>
+              <b>Country</b>
+            </p>
           </div>
         </div>
         <div
@@ -74,7 +76,7 @@ const Graph = ({ data, query }) => {
         >
           <div className="country-progress-header">
             <p style={{ margin: "0 auto" }}>
-              {languagesData ? "Languages" : "Population"}
+              {languagesData ? <b>Languages</b> : <b>Population</b>}
             </p>
           </div>
         </div>
@@ -89,7 +91,7 @@ const Graph = ({ data, query }) => {
         >
           <div className="country-value-header">
             <p style={{ margin: "0 auto" }}>
-              Total {languagesData ? "languages" : "population"}
+              <b>Total {languagesData ? "Languages" : "Population"}</b>
             </p>
           </div>
         </div>
@@ -158,7 +160,13 @@ const Graph = ({ data, query }) => {
                   )}
                   {populationData && (
                     <div className="country-population-progress-div">
-                      <progress value={country.population} max={7888000000} />
+                      <progress
+                        style={{
+                          height: "40px",
+                        }}
+                        value={country.population}
+                        max={7888000000}
+                      />
                     </div>
                   )}
                 </div>
