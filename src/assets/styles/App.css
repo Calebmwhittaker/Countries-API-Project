@@ -2,3 +2,7 @@
     outline: 1px solid red;
     outline-offset: 1px solid red;
 } */
+
+th, td {
+    width: 30%;
+}

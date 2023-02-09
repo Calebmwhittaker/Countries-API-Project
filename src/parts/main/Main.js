@@ -17,15 +17,26 @@ const Main = (props) => {
           onKeyUp={handleChange}
           placeholder="Search countries by name, city, and languages"
         />
-        <i
-          style={{
-            fontSize: "60px",
-            marginBottom: "20px",
-            color: "#459dfb",
-          }}
-          onClick={handleClick}
-          className="fa-solid fa-chart-simple"
-        />
+        <a href="#graph-container">
+          <i
+            style={{
+              fontSize: "60px",
+              marginBottom: "20px",
+              color: "#459dfb",
+            }}
+            onClick={handleClick}
+            className="fa-solid fa-chart-simple"
+          />
+        </a>
+        {!graph ? (
+          <p style={{ paddingBottom: "20px", marginTop: "-10px" }}>
+            Click here to see more information
+          </p>
+        ) : (
+          <p style={{ paddingBottom: "20px", marginTop: "-10px" }}>
+            Click here to hide graph
+          </p>
+        )}
       </div>
       <div
         style={{ justifyContent: "space-around" }}
@@ -33,9 +44,12 @@ const Main = (props) => {
       >
         <Countries CountriesData={CountriesData} />
       </div>
-      <div className="graph-container">
+      <div id={graph ? "graph-container" : "graph-container-clicked"}>
         {graph && <Graph data={data} query={query} />}
       </div>
+      <a href="#header-wrapper">
+        <button style={{ marginBottom: "20px" }}>Back to Top</button>
+      </a>
     </main>
   );
 };

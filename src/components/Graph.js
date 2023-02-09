@@ -11,7 +11,7 @@ const formatLanguages = (languages, argument) => {
     if (argument === "progress") {
       return <progress value={languagesArray.length} max={15} />;
     } else if (argument === "value") {
-      return <p>{languagesArray.length}</p>;
+      return <span>{languagesArray.length}</span>;
     }
   }
 };
@@ -46,156 +46,81 @@ const Graph = ({ data, query }) => {
           text={"Languages"}
         />
       </div>
-      <div
-        style={{ display: "flex", justifyContent: "space-around" }}
-        className="graph-headers"
-      >
-        <div
-          style={{
-            width: "200px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          className="country-name-header-container"
-        >
-          <div className="country-name-header">
-            <p style={{ margin: "0 auto" }}>
-              <b>Country</b>
-            </p>
-          </div>
-        </div>
-        <div
-          style={{
-            width: "200px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          className="country-progress-header-container"
-        >
-          <div className="country-progress-header">
-            <p style={{ margin: "0 auto" }}>
-              {languagesData ? <b>Languages</b> : <b>Population</b>}
-            </p>
-          </div>
-        </div>
-        <div
-          style={{
-            width: "200px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          className="country-value-header-container"
-        >
-          <div className="country-value-header">
-            <p style={{ margin: "0 auto" }}>
-              <b>Total {languagesData ? "Languages" : "Population"}</b>
-            </p>
-          </div>
-        </div>
-      </div>
-      {data
-        .filter((country) => {
-          if (query === "") {
-            return country;
-          } else if (
-            country.name.common.toLowerCase().includes(query.toLowerCase())
-          ) {
-            return country;
-          } else if (
-            country.capital
-              ? country.capital[0].toLowerCase().includes(query.toLowerCase())
-              : null
-          ) {
-            return country;
-          } else if (country.languages !== undefined) {
-            let languagesArray = [];
-            const languageValues = Object.values(country.languages);
-            for (let i = 0; i < languageValues.length; i++) {
-              languagesArray.push(languageValues[i].toLowerCase());
-            }
-            if (languagesArray.includes(query.toLowerCase())) {
-              return country;
-            }
-          }
-        })
-        .sort((a, b) => (a.name.common > b.name.common ? 1 : -1))
-        .map((country) => {
-          return (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-              }}
-              key={country.name.common}
-              className="graph-country-container"
-            >
-              <div
-                style={{
-                  width: "200px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                className="country-name-div-container"
-              >
-                <div className="country-name-div">{country.name.common}</div>
-              </div>
-              <div
-                style={{
-                  width: "200px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                className="country-progress-div-container"
-              >
-                <div className="country-progress-div">
+      <table className="table table-dark table-striped table-hover">
+        <thead className="graph-headers">
+          <tr>
+            <th>Country</th>
+            <th>{languagesData ? "Languages" : "Population"}</th>
+            <th>{languagesData ? "Total Languages" : "Total Population"}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data
+            .filter((country) => {
+              if (query === "") {
+                return country;
+              } else if (
+                country.name.common.toLowerCase().includes(query.toLowerCase())
+              ) {
+                return country;
+              } else if (
+                country.capital
+                  ? country.capital[0]
+                      .toLowerCase()
+                      .includes(query.toLowerCase())
+                  : null
+              ) {
+                return country;
+              } else if (country.languages !== undefined) {
+                let languagesArray = [];
+                const languageValues = Object.values(country.languages);
+                for (let i = 0; i < languageValues.length; i++) {
+                  languagesArray.push(languageValues[i].toLowerCase());
+                }
+                if (languagesArray.includes(query.toLowerCase())) {
+                  return country;
+                }
+              }
+            })
+            .sort((a, b) => (a.name.common > b.name.common ? 1 : -1))
+            .map((country) => {
+              return (
+                <tr
+                  key={country.name.common}
+                  className="graph-country-container"
+                >
+                  <td>
+                    <span>{country.name.common}</span>
+                  </td>
                   {languagesData && (
-                    <div className="country-language-progress-div">
+                    <td className="country-language-progress-div">
                       {formatLanguages(country.languages, "progress")}
-                    </div>
+                    </td>
                   )}
                   {populationData && (
-                    <div className="country-population-progress-div">
-                      <progress
-                        style={{
-                          height: "40px",
-                        }}
-                        value={country.population}
-                        max={7888000000}
-                      />
-                    </div>
+                    <td className="country-population-progress-div">
+                      <progress value={country.population} max={7888000000} />
+                    </td>
                   )}
-                </div>
-              </div>
-              <div
-                style={{
-                  width: "200px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                className="country-value-div-continer"
-              >
-                <div style={{ height: "25px" }} className="country-value-div">
                   {languagesData && (
-                    <div className="country-language-value-div">
-                      {formatLanguages(country.languages, "value")}
-                    </div>
+                    <td className="country-language-value-div">
+                      <span>{formatLanguages(country.languages, "value")}</span>
+                    </td>
                   )}
                   {populationData && (
-                    <div className="country-population-value-div">
-                      {country.population}
-                    </div>
+                    <td className="country-population-value-div">
+                      <span>
+                        {Intl.NumberFormat("en-US", {
+                          style: "decimal",
+                        }).format(country.population)}
+                      </span>
+                    </td>
                   )}
-                </div>
-              </div>
-            </div>
-          );
-        })}
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </div>
   );
 };
