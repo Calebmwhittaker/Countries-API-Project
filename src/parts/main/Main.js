@@ -28,15 +28,9 @@ const Main = (props) => {
             className="fa-solid fa-chart-simple"
           />
         </a>
-        {!graph ? (
-          <p style={{ paddingBottom: "20px", marginTop: "-10px" }}>
-            Click here to see more information
-          </p>
-        ) : (
-          <p style={{ paddingBottom: "20px", marginTop: "-10px" }}>
-            Click here to hide graph
-          </p>
-        )}
+        <h2 style={{ paddingBottom: "30px" }}>
+          Click the icon to see more information
+        </h2>
       </div>
       <div
         style={{ justifyContent: "space-around" }}
@@ -44,8 +38,8 @@ const Main = (props) => {
       >
         <Countries CountriesData={CountriesData} />
       </div>
-      <div id={graph ? "graph-container" : "graph-container-clicked"}>
-        {graph && <Graph data={data} query={query} />}
+      <div id="graph-container">
+        <Graph data={data} query={query} />
       </div>
       <a href="#header-wrapper">
         <button style={{ marginBottom: "20px" }}>Back to Top</button>

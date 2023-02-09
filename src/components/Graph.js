@@ -55,19 +55,34 @@ const Graph = ({ data, query }) => {
           </tr>
         </thead>
         <tbody>
+          {populationData && (
+            <tr>
+              <td>World</td>
+              <td>
+                <progress value={7888000000} max={7888000000} />
+              </td>
+              <td>
+                {Intl.NumberFormat("en-US", { style: "decimal" }).format(
+                  7888000000
+                )}
+              </td>
+            </tr>
+          )}
           {data
             .filter((country) => {
               if (query === "") {
                 return country;
               } else if (
-                country.name.common.toLowerCase().includes(query.toLowerCase())
+                country.name.common
+                  .toLowerCase()
+                  .startsWith(query.toLowerCase())
               ) {
                 return country;
               } else if (
                 country.capital
                   ? country.capital[0]
                       .toLowerCase()
-                      .includes(query.toLowerCase())
+                      .startsWith(query.toLowerCase())
                   : null
               ) {
                 return country;
@@ -77,8 +92,10 @@ const Graph = ({ data, query }) => {
                 for (let i = 0; i < languageValues.length; i++) {
                   languagesArray.push(languageValues[i].toLowerCase());
                 }
-                if (languagesArray.includes(query.toLowerCase())) {
-                  return country;
+                for (const langauge of languagesArray) {
+                  if (langauge.startsWith(query.toLowerCase())) {
+                    return country;
+                  }
                 }
               }
             })
