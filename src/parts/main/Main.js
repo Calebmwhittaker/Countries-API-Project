@@ -17,7 +17,10 @@ const Main = (props) => {
           onKeyUp={handleChange}
           placeholder="Search countries by name, city, and languages"
         />
-        <a href="#graph-container">
+        <a
+          style={{ textDecoration: "none", color: "black", fontSize: "30px" }}
+          href="#graph-container"
+        >
           <i
             style={{
               fontSize: "60px",
@@ -26,11 +29,28 @@ const Main = (props) => {
             }}
             onClick={handleClick}
             className="fa-solid fa-chart-simple"
-          />
+          >
+            <span
+              style={{
+                fontSize: "30px",
+                display: "block",
+                padding: "10px 0px",
+                color: "black",
+              }}
+            >
+              Graph
+            </span>
+          </i>
         </a>
-        <h2 style={{ paddingBottom: "30px" }}>
-          Click the icon to see more information
-        </h2>
+        <h3
+          style={{
+            paddingBottom: "30px",
+            marginTop: "-12px",
+            fontFamily: "Verdana, sans-serif",
+          }}
+        >
+          Click the graph icon to see more information
+        </h3>
       </div>
       <div
         style={{ justifyContent: "space-around" }}
@@ -42,7 +62,9 @@ const Main = (props) => {
         <Graph data={data} query={query} />
       </div>
       <a href="#header-wrapper">
-        <button style={{ marginBottom: "20px" }}>Back to Top</button>
+        <button className="btn btn-dark" style={{ marginBottom: "20px" }}>
+          Back to Top
+        </button>
       </a>
     </main>
   );
