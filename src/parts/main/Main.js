@@ -5,7 +5,7 @@ import Graph from "../../components/Graph.js";
 import Countries from "../../components/Countries.js";
 
 const Main = (props) => {
-  const { handleChange, handleClick, data, query, graph } = props.mainData;
+  const { handleChange, handleClick, data, query } = props.mainData;
   const CountriesData = {
     data: data,
     query: query,
@@ -21,26 +21,27 @@ const Main = (props) => {
           style={{ textDecoration: "none", color: "black", fontSize: "30px" }}
           href="#graph-container"
         >
-          <i
-            style={{
-              fontSize: "60px",
-              marginBottom: "20px",
-              color: "#459dfb",
-            }}
-            onClick={handleClick}
-            className="fa-solid fa-chart-simple"
-          >
-            <span
+          <button className="btn btn-dark" style={{ marginBottom: "40px" }}>
+            <i
               style={{
-                fontSize: "20px",
-                display: "block",
-                padding: "10px 0px",
-                color: "black",
+                fontSize: "60px",
+                color: "#459dfb",
+                marginBottom: "5px",
               }}
+              onClick={handleClick}
+              className="fa-solid fa-chart-simple"
             >
-              Graph
-            </span>
-          </i>
+              <span
+                style={{
+                  fontSize: "20px",
+                  display: "block",
+                  color: "white",
+                }}
+              >
+                Graph
+              </span>
+            </i>
+          </button>
         </a>
         <h3
           style={{

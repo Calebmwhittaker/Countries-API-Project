@@ -5,11 +5,11 @@ i {
     padding: 10px
 }
 
-i:hover {
+/* i:hover {
     cursor: pointer;
     box-shadow: 2px 3px 5px black;
-}
+} */
 
-i:active {
+/* i:active {
     box-shadow: 2px 3px 10px gray;
-}
+} */
