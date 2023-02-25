@@ -51,13 +51,13 @@ const Country = (props) => {
     <div
       style={{
         backgroundColor: "#ffffff",
-        margin: "40px -10px",
+        margin: "40px 0px",
         padding: "30px 20px",
       }}
-      className="burger"
+      className="country-card"
     >
       <img
-        style={{ marginBottom: "10px", width: "350px", height: "200px" }}
+        style={{ marginBottom: "10px", width: "18rem", height: "10rem" }}
         src={png}
         alt="country flag"
       />

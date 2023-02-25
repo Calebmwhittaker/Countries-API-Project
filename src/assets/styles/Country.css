@@ -1,7 +1,8 @@
-.burger {
+.country-card {
     transition: 0.25s ease-in;
+    width: 100%;
 }
 
-.burger:hover {
+.country-card:hover {
     box-shadow: 1px 1px 5px black;
 }

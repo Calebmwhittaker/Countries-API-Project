@@ -36,7 +36,7 @@ const Countries = (props) => {
         .map((country) => {
           return (
             <div
-              style={{ display: "flex", width: "400px" }}
+              style={{ display: "flex", width: "25rem" }}
               key={country.name.common}
               className="col-xl-3 col-sm-6 country-container"
             >

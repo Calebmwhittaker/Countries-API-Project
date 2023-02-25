@@ -1,17 +1,19 @@
 input {
-    width: 90%;
+    width: 95%;
     margin: 20px auto;
     display: block;
     height: 40px;
     padding: 30px 20px;
     border-radius: 25px;
-    font-size: 30px;
+    font-size: 13px;
     text-align: center;
     font-family: Helvetica;
 }
 
-@media (max-width: 817px) {
+@media (min-width: 817px) {
     input {
-        font-size: 18px;
+        font-size: 30px;
+        width: 90%;
     }
 }
+

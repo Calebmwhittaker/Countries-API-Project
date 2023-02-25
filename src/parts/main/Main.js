@@ -15,7 +15,7 @@ const Main = (props) => {
       <div className="input-wrapper" style={{ backgroundColor: "#ffffff" }}>
         <Input
           onKeyUp={handleChange}
-          placeholder="Search countries by name, city, and languages"
+          placeholder="Search countries by name, capital, and languages"
         />
         <a
           style={{ textDecoration: "none", color: "black", fontSize: "30px" }}
@@ -32,7 +32,7 @@ const Main = (props) => {
           >
             <span
               style={{
-                fontSize: "30px",
+                fontSize: "20px",
                 display: "block",
                 padding: "10px 0px",
                 color: "black",
